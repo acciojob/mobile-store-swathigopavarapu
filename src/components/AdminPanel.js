@@ -38,12 +38,14 @@ const AdminPanel = ({ products, setProducts }) => {
       <h3>Product List</h3>
       {products.map((p) => (
         <div key={p.id} className="col-12 my-2">
-          <a href="#" className="row p-2 border">
+          <a href="#" className="product-link d-block p-2 border">
+            <div className="row">
             <input className="form-control" value={p.name} onChange={e => handleEdit(p.id, "name", e.target.value)} />
             <input className="form-control" value={p.price} onChange={e => handleEdit(p.id, "price", parseFloat(e.target.value))} />
             <input className="form-control" value={p.description} onChange={e => handleEdit(p.id, "description", e.target.value)} />
             <input className="form-control" value={p.image} onChange={e => handleEdit(p.id, "image", e.target.value)} />
             <button className="float-right btn" onClick={() => handleDelete(p.id)}>Delete</button>
+            </div>
           </a>
           </div>
         
