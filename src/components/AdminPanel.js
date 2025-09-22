@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AdminPanel = ({ products, setProducts, history }) => {
+const AdminPanel = ({ products, setProducts }) => {
   const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
@@ -13,7 +13,7 @@ const AdminPanel = ({ products, setProducts, history }) => {
   };
 
   const handleEdit = (id, field, value) => {
-    const updatedProducts = products.map(p => 
+    const updatedProducts = products.map(p =>
       p.id === id ? { ...p, [field]: value } : p
     );
     setProducts(updatedProducts);
@@ -36,8 +36,8 @@ const AdminPanel = ({ products, setProducts, history }) => {
       <button className="btn float-right" onClick={handleAdd}>Add</button>
 
       <h3>Product List</h3>
-      {products.map((p, index) => (
-        <div key={p.id} className="col-12">
+      {products.map((p) => (
+        <a key={p.id} href="#" className="col-12">
           <div className="row">
             <input className="form-control" value={p.name} onChange={e => handleEdit(p.id, "name", e.target.value)} />
             <input className="form-control" value={p.price} onChange={e => handleEdit(p.id, "price", parseFloat(e.target.value))} />
@@ -45,7 +45,7 @@ const AdminPanel = ({ products, setProducts, history }) => {
             <input className="form-control" value={p.image} onChange={e => handleEdit(p.id, "image", e.target.value)} />
             <button className="float-right btn" onClick={() => handleDelete(p.id)}>Delete</button>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   );
